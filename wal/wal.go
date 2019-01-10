@@ -140,7 +140,7 @@ func Create(lg *zap.Logger, dirpath string, metadata []byte) (*WAL, error) {
 		}
 		return nil, err
 	}
-	if err = fileutil.Preallocate(f.File, SegmentSizeBytes, true); err != nil {
+	if err = fileutil.Preallocate(f.File, SegmentSizeBytes, false); err != nil {
 		if lg != nil {
 			lg.Warn(
 				"failed to preallocate an initial WAL file",
